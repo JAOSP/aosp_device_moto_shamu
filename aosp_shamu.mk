@@ -38,3 +38,6 @@ PRODUCT_NAME := aosp_shamu
 PRODUCT_PACKAGES += \
     Launcher3
 
+#AOSP
+$(call inherit-product-if-exists, vendor/aosp/moto/shamu/aosp.mk)
+$(call inherit-product, device/aosp/common/aosp.mk)
