@@ -13,11 +13,13 @@ cd ../
 ./simg2img shamu-mra58k/system.img system.ext4.img
 mkdir system
 sudo mount -o loop -t ext4 system.ext4.img system
+sudo chmod a+r system/bin/adspd
+sudo chmod a+r system/bin/qmuxd
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/system/##g'| sed -e "s#^-/system/##g"`; do
+for FILE in `cat proprietary-blobs-jaosp.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/system/##g'| sed -e "s#^-/system/##g"`; do
     DIR=`dirname $FILE`
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR

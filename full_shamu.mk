@@ -23,7 +23,7 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=razor BUILD_FINGERPRINT=google/shamu/shamu:6.0/MRA58K/2256973:user/release-keys PRIVATE_BUILD_DESC="shamu-user 6.0 MRA58K 2256973 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=shamu BUILD_FINGERPRINT=google/shamu/shamu:6.0/MRA58K/2256973:user/release-keys PRIVATE_BUILD_DESC="shamu-user 6.0 MRA58K 2256973 release-keys"
 
 PRODUCT_NAME := full_shamu
 PRODUCT_DEVICE := shamu
@@ -35,12 +35,5 @@ PRODUCT_RESTRICT_VENDOR_FILES := true
 $(call inherit-product, device/moto/shamu/device.mk)
 $(call inherit-product-if-exists, vendor/moto/shamu/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/moto/shamu/shamu-vendor.mk)
-
-PRODUCT_NAME := full_shamu
-
-PRODUCT_PACKAGES += \
-    Launcher3
-
-#AOSP
 $(call inherit-product-if-exists, vendor/aosp/moto/shamu/full.mk)
 $(call inherit-product, device/aosp/common/full.mk)

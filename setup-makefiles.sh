@@ -1,7 +1,7 @@
 #!/bin/bash
 
-VENDOR=lge
-DEVICE=hammerhead
+VENDOR=moto
+DEVICE=shamu
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
@@ -11,15 +11,15 @@ PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`cat proprietary-blobs.txt | grep -v ^# | grep -v ^$ | wc -l | awk {'print $1'}`
-for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/system/##g'`; do
+COUNT=`cat proprietary-blobs-jaosp.txt | grep -v ^# | grep -v ^$ | wc -l | awk {'print $1'}`
+for FILE in `cat proprietary-blobs-jaosp.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/system/##g'`; do
     COUNT=`expr $COUNT - 1`
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
     if [[ ! "$FILE" =~ ^-.* ]]; then
         FILE=`echo $FILE | sed -e "s/^-//g"`
-        echo "    $OUTDIR/proprietary/$FILE:system/$FILE:lge$LINEEND" >> $MAKEFILE
+        echo "    $OUTDIR/proprietary/$FILE:system/$FILE:moto$LINEEND" >> $MAKEFILE
     fi
 done
 
@@ -37,7 +37,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),hammerhead)
+ifeq (\$(TARGET_DEVICE),shamu)
 
 endif
 EOF
