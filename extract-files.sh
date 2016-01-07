@@ -4,13 +4,13 @@ VENDOR=moto
 DEVICE=shamu
 
 echo "Please wait..."
-wget -nc -q https://dl.google.com/dl/android/aosp/shamu-mra58k-factory-5b07088c.tgz
-tar zxf shamu-mra58k-factory-5b07088c.tgz
-rm shamu-mra58k-factory-5b07088c.tgz
-cd shamu-mra58k
-unzip image-shamu-mra58k.zip
+wget -nc -q https://dl.google.com/dl/android/aosp/shamu-mmb29s-factory-fc7b590e.tgz
+tar zxf shamu-mmb29s-factory-fc7b590e.tgz
+rm shamu-mmb29s-factory-fc7b590e.tgz
+cd shamu-mmb29s
+unzip image-shamu-mmb29s.zip
 cd ../
-./simg2img shamu-mra58k/system.img system.ext4.img
+./simg2img shamu-mmb29s/system.img system.ext4.img
 mkdir system
 sudo mount -o loop -t ext4 system.ext4.img system
 sudo chmod a+r system/bin/adspd
@@ -24,7 +24,6 @@ for FILE in `cat proprietary-blobs-jaosp.txt | grep -v ^# | grep -v ^$ | sed -e 
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    echo "cp $FILE $BASE/$FILE"
     cp system/$FILE $BASE/$FILE
 
 done
@@ -33,5 +32,5 @@ done
 
 sudo umount system
 rm -rf system
-rm -rf shamu-mra58k
+rm -rf shamu-mmb29s
 rm system.ext4.img

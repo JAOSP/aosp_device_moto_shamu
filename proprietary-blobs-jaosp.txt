@@ -453,3 +453,4 @@
 /system/vendor/lib/libtime_genoff.so
 /system/vendor/lib/libTimeService.so
 /system/vendor/lib/libxml.so
+/system/xbin/wlutil
